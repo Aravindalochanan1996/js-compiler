@@ -1,0 +1,95 @@
+.compiler-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100px); // Example: Adjust based on your app's layout, less header height
+  padding: 15px;
+  gap: 15px; // Space between child elements (controls, editor, output)
+  box-sizing: border-box; // Include padding and border in the element's total width and height
+
+  .controls-area {
+    display: flex;
+    align-items: center;
+    gap: 10px; // Space between label, select, and button
+    padding-bottom: 10px; // Space below the controls
+    border-bottom: 1px solid #eee; // Separator line
+
+    label {
+      font-weight: bold;
+    }
+
+    select {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: white;
+      font-size: 14px;
+    }
+
+    .compile-button {
+      padding: 8px 15px;
+      background-color: #007bff; // Primary button color
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #0056b3; // Darker shade on hover
+      }
+
+      &:active {
+        background-color: #004085; // Even darker when pressed
+      }
+    }
+  }
+
+  .editor-area {
+    flex-grow: 1; // Allows the editor to take up available space
+    display: flex; // Needed for ngx-monaco-editor to fill height
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden; // Ensures the editor respects the border-radius
+
+    ngx-monaco-editor {
+      width: 100%; // Ensure editor component takes full width of its container
+      height: 100%; // Ensure editor component takes full height of its container
+    }
+  }
+
+  .output-area {
+    display: flex;
+    flex-direction: column;
+    min-height: 100px; // Minimum height for the output area
+    max-height: 200px; // Maximum height before scrolling
+    border-top: 1px solid #eee; // Separator line
+    padding-top: 10px; // Space above the output content
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .output-content {
+      flex-grow: 1;
+      background-color: #f8f9fa; // Light background for the output
+      border: 1px solid #e0e0e0;
+      padding: 10px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 13px;
+      color: #333;
+      overflow-y: auto; // Make it scrollable if content overflows
+      white-space: pre-wrap; // Preserve whitespace and wrap lines
+      border-radius: 4px;
+      margin: 0; // Remove default margin from pre tag
+    }
+  }
+}
+
+// If you have a global styles.scss or styles.css, consider moving some general styles there
+// e.g., body, html { height: 100%; margin: 0; font-family: sans-serif; }
+// to ensure the vh units work as expected and for a consistent look and feel.
+// For this component, we assume its parent container allows it to expand.
