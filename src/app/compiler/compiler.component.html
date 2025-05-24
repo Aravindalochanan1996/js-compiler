@@ -1,0 +1,27 @@
+<div class="compiler-container">
+  <div class="controls-area">
+    <label for="language-select">Select Language: </label>
+    <select
+      id="language-select"
+      [(ngModel)]="selectedLanguage"
+      (ngModelChange)="onLanguageChange()"
+    >
+      <option *ngFor="let lang of supportedLanguages" [value]="lang">
+        {{ lang }}
+      </option>
+    </select>
+    <button class="compile-button" (click)="compile()">Compile</button>
+  </div>
+
+  <div class="editor-area">
+    <ngx-monaco-editor
+      [options]="editorOptions"
+      [(ngModel)]="code"
+    ></ngx-monaco-editor>
+  </div>
+
+  <div class="output-area">
+    <h3>Output:</h3>
+    <pre class="output-content">{{ output }}</pre>
+  </div>
+</div>
