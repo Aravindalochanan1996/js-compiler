@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 import { FormsModule } from '@angular/forms'; // Required for ngModel
 import { CompilerMockService } from '../compiler-mock.service'; // Import the mock service
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-compiler',
   standalone: true,
-  imports: [MonacoEditorModule, FormsModule],
+  imports: [MonacoEditorModule, FormsModule, NgFor],
   templateUrl: './compiler.component.html',
   styleUrl: './compiler.component.scss',
   providers: [CompilerMockService] // Add service to providers if not using root injection or a module
